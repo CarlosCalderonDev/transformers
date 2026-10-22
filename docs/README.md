@@ -20,6 +20,8 @@ demás.
   autorizados, aceptación y consecuencias.
 - [Aprobación integral del MVP](decisions/0002-mvp-scope.md): alcance aprobado y
   control de cambios.
+- [Fundamento multi-tenant](decisions/0003-multi-tenancy-foundation.md): propiedad,
+  aislamiento, contexto confiable, responsabilidades y verificación obligatoria.
 - [Visión del producto](product-vision.md): propósito, participantes, alcance y
   estrategia de evolución.
 - [Arquitectura y diseño técnico](architecture.md): organización del sistema,

@@ -36,40 +36,32 @@ responsabilidades principales:
 Las reglas de negocio permanecerán independientes de las tecnologías de
 interfaz, persistencia e integración.
 
-## Organización del repositorio
+## Organización de repositorios
 
-El código fuente se administrará mediante un monorepositorio que integrará la
-aplicación Next.js y un Cargo Workspace para el backend en Rust:
+El sistema se administrará mediante repositorios hermanos e independientes
+dentro de una carpeta local llamada `workspace`:
 
 ```text
-TRANSFORMERS/
-├── apps/
-│   ├── web/
-│   ├── server/
-│   └── worker/
-├── crates/
-│   ├── core/
-│   ├── contracts/
-│   └── platform/
-├── database/
-│   ├── migrations/
-│   └── seeds/
-├── infrastructure/
-│   └── docker/
-├── tests/
-├── docs/
-└── .github/
-    └── workflows/
+workspace/
+├── transformers/  # lógica de negocio y arquitectura general
+├── arcee/         # base de datos
+├── bumblebee/     # frontend
+└── optimus/       # backend y trabajadores
 ```
 
-Los módulos funcionales del backend se ubicarán inicialmente en `crates/core` y
-podrán convertirse en crates independientes cuando su complejidad lo
-justifique. El frontend permanecerá en `apps/web` y consumirá las capacidades
-del backend mediante contratos HTTP explícitos.
+`optimus` organizará el backend como un Cargo Workspace y conservará sus módulos
+funcionales, casos de uso, adaptadores y trabajadores. `bumblebee` consumirá sus
+capacidades mediante contratos HTTP explícitos. `arcee` será la fuente técnica
+de esquemas, migraciones, restricciones y políticas de acceso a datos.
 
-Cada módulo podrá contener componentes de dominio, aplicación, infraestructura
-y pruebas. Las carpetas, archivos, tablas, campos, estructuras y funciones
-utilizarán nombres técnicos en inglés de manera consistente.
+Cada repositorio tendrá sus propias pruebas, automatización y documentación
+técnica detallada. Las reglas compartidas y decisiones generales se mantendrán
+en `transformers`; los contratos entre componentes estarán versionados y sus
+cambios se coordinarán entre los repositorios afectados.
+
+Cada módulo del backend podrá contener componentes de dominio, aplicación,
+infraestructura y pruebas. Las carpetas, archivos, tablas, campos, estructuras y
+funciones utilizarán nombres técnicos en inglés de manera consistente.
 
 ## Modularidad funcional
 

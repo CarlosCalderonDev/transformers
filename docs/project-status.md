@@ -18,6 +18,12 @@ implementar el MVP aprobado.
 
 - La definición del [MVP inicial](mvp.md) fue aprobada integralmente y está
   registrada en [ADR 0002](decisions/0002-mvp-scope.md).
+- El fundamento de aislamiento entre organizaciones fue aprobado en
+  [ADR 0003](decisions/0003-multi-tenancy-foundation.md). Su implementación
+  deberá validarse antes de construir los módulos funcionales.
+- La primera prueba conjunta entre `arcee` y `optimus` ya valida RLS, relaciones
+  entre tenants, contexto transaccional y ausencia de fugas en el pool. Aún
+  faltan autenticación, trabajos asíncronos, cachés y archivos.
 - La lógica canónica de reserva está en
   [Proceso de citas](appointment-process.md).
 - La preparación de la empresa, personal, servicios, horarios y contactos está
@@ -39,6 +45,8 @@ MVP.
 4. **Director:** aprobar o cambiar el modelo de alta inicial.
 5. **Agente:** integrar la decisión y revisar toda la lógica de negocio.
 6. **Agente:** cerrar la etapa y preparar el diseño técnico del primer corte.
+7. **En progreso:** completar la validación multi-tenant iniciada en `arcee` y
+   `optimus` antes de implementar agendamiento.
 
 ## Decisiones macro pendientes
 

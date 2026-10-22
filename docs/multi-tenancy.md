@@ -1,5 +1,7 @@
 # Multi-tenancy
 
+**Estado:** fundamento aprobado en [ADR 0003](decisions/0003-multi-tenancy-foundation.md)
+
 ## Modelo adoptado
 
 TRANSFORMERS funcionará como una plataforma multiempresa con identidad global de
@@ -50,19 +52,24 @@ implementar la autenticación multiempresa.
 
 ## Defensa en profundidad
 
-El aislamiento no debe depender de un único filtro en la aplicación. Se
-recomiendan dos capas complementarias:
+El aislamiento no dependerá de un único filtro en la aplicación. Se aplicarán
+tres capas complementarias:
 
 1. **Aplicación:** los casos de uso y consultas incluyen explícitamente el
    contexto del tenant.
 2. **Base de datos:** PostgreSQL aplica políticas de Row Level Security (RLS)
    para los datos que requieren aislamiento.
+3. **Integridad:** restricciones y relaciones impiden referencias cruzadas entre
+   organizaciones.
 
-RLS constituye una recomendación arquitectónica que deberá validarse mediante
-una prueba de implementación antes de considerarse una decisión cerrada. Si se
-adopta, cada transacción establecerá de forma segura el contexto del tenant,
-por ejemplo mediante `set_config(..., true)`, y las políticas usarán ese contexto
-para autorizar o rechazar operaciones.
+RLS es obligatoria para las tablas sujetas a aislamiento. Cada transacción
+establecerá de forma segura el contexto del tenant, por ejemplo mediante
+`set_config(..., true)`, y las políticas usarán ese contexto para autorizar o
+rechazar operaciones. La ausencia de contexto deberá denegar el acceso.
+
+El rol ordinario de la aplicación no podrá omitir RLS. Las migraciones y las
+operaciones administrativas excepcionales utilizarán credenciales separadas,
+restringidas y auditadas.
 
 Se deberá comprobar especialmente el comportamiento del pool de conexiones para
 evitar que el contexto de una solicitud permanezca activo en otra conexión o
@@ -112,10 +119,18 @@ concretas.
       relación.
 - [ ] Hacer obligatorio `tenant_id` en las tablas que pertenezcan a un tenant.
 - [ ] Proteger las relaciones para impedir referencias entre organizaciones.
-- [ ] Validar RLS y el manejo del contexto con SQLx y el pool de conexiones.
-- [ ] Probar que el tenant A no puede leer ni modificar datos del tenant B.
-- [ ] Probar que el tenant A no puede relacionar sus registros con objetos del
+- [x] Validar RLS y el manejo del contexto con SQLx y el pool de conexiones.
+- [x] Verificar que el rol real de la aplicación no pueda omitir RLS.
+- [x] Probar que el tenant A no puede leer ni modificar datos del tenant B.
+- [x] Probar que el tenant A no puede relacionar sus registros con objetos del
       tenant B.
 - [ ] Incluir `tenant_id` en la observabilidad cuando sea útil, sin exponer
       información sensible.
+- [ ] Comprobar el aislamiento en trabajos asíncronos, cachés, archivos e
+      idempotencia.
+
+La validación inicial se implementó conjuntamente en `arcee` y `optimus`. Cubre
+RLS, rol de ejecución, relaciones compuestas, contexto local a la transacción y
+reutilización segura del pool. Los puntos restantes se completarán al incorporar
+autenticación, trabajos asíncronos y almacenamiento externo.
 
