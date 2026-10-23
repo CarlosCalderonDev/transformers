@@ -23,6 +23,7 @@ El MVP está definido y aprobado; el proyecto se encuentra en la etapa de lógic
 - [Arquitectura y diseño técnico](docs/architecture.md)
 - [Multi-tenancy](docs/multi-tenancy.md)
 - [Decisión del fundamento multi-tenant](docs/decisions/0003-multi-tenancy-foundation.md)
+- [Autenticación propia, federada y resolución del tenant](docs/decisions/0004-authentication-membership-tenant-resolution.md)
 - [Stack tecnológico](docs/technology-stack.md)
 - [Índice completo](docs/README.md)
 

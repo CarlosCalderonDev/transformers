@@ -11,7 +11,7 @@ implementar el MVP aprobado.
 - [x] Proceso de citas, estados, excepciones e invariantes definidos.
 - [x] Configuración de organización, catálogo, horarios y contactos definida.
 - [x] Membresías, roles y permisos operativos definidos.
-- [ ] Modelo de creación de la organización y su primer administrador aprobado.
+- [x] Modelo de creación de la organización y su primer administrador aprobado.
 - [ ] Revisión integral de negocio completada sin vacíos materiales.
 
 ## Estado actual
@@ -21,9 +21,18 @@ implementar el MVP aprobado.
 - El fundamento de aislamiento entre organizaciones fue aprobado en
   [ADR 0003](decisions/0003-multi-tenancy-foundation.md). Su implementación
   deberá validarse antes de construir los módulos funcionales.
-- La primera prueba conjunta entre `arcee` y `optimus` ya valida RLS, relaciones
-  entre tenants, contexto transaccional y ausencia de fugas en el pool. Aún
-  faltan autenticación, trabajos asíncronos, cachés y archivos.
+- La prueba conjunta entre `arcee` y `optimus` valida RLS, relaciones entre
+  tenants, sesión, membresía, resolución autorizada, contexto transaccional y
+  ausencia de fugas en el pool. Aún faltan trabajos asíncronos, cachés y archivos.
+- La autenticación global, las sesiones, la autorización por membresía, la
+  resolución segura del tenant y el alta inicial fueron aprobadas en
+  [ADR 0004](decisions/0004-authentication-membership-tenant-resolution.md).
+- El modelo aprobado combina autenticación local propia con Google y Microsoft,
+  vinculables explícitamente a una misma cuenta sin fusionar por correo.
+- El primer fundamento técnico ya implementa y prueba el esquema de cuentas,
+  credenciales, identidades, sesiones e invitaciones en `arcee`, y Argon2id,
+  política de contraseña, tokens opacos, validación de sesión, claves externas y
+  transacción tenant autorizada en `optimus`.
 - La lógica canónica de reserva está en
   [Proceso de citas](appointment-process.md).
 - La preparación de la empresa, personal, servicios, horarios y contactos está
@@ -32,25 +41,25 @@ implementar el MVP aprobado.
 
 ## Siguiente paso
 
-Decidir cómo se crearán las organizaciones piloto y su primer administrador. El
-agente recomienda un alta asistida mediante una operación interna confiable y
-una invitación inicial, dejando el registro empresarial autoservicio fuera del
-MVP.
+Implementar los casos de uso y contratos HTTP de registro por invitación, inicio
+local, cierre, recuperación y vinculación explícita. Google y Microsoft se
+conectarán cuando existan credenciales configuradas fuera de Git.
 
 ## Ruta de cierre de la etapa
 
 1. **Completado:** definición del MVP aprobada y cerrada.
 2. **Completado:** proceso de citas definido de extremo a extremo.
 3. **Completado:** configuración operativa y membresías definidas.
-4. **Director:** aprobar o cambiar el modelo de alta inicial.
-5. **Agente:** integrar la decisión y revisar toda la lógica de negocio.
-6. **Agente:** cerrar la etapa y preparar el diseño técnico del primer corte.
+4. **Completado:** alta asistida e invitación inicial aprobadas.
+5. **Completado:** integrar la decisión de autenticación y derivar el primer
+   diseño técnico.
+6. **Completado:** validar sesión y membresía antes de entregar una transacción
+   tenant-scoped.
 7. **En progreso:** completar la validación multi-tenant iniciada en `arcee` y
    `optimus` antes de implementar agendamiento.
 
 ## Decisiones macro pendientes
 
-- Actual: creación de las organizaciones piloto y su primer administrador.
 - Antes del piloto: política de privacidad, retención y anonimización para usar
   datos reales.
 
@@ -63,5 +72,7 @@ MVP.
 
 ## Bloqueos
 
-El cierre de la etapa de negocio depende de decidir el modelo de alta inicial.
+No hay bloqueos para construir la base. La integración real con Google y
+Microsoft requerirá registrar las aplicaciones y aportar sus credenciales por
+configuración segura; estas nunca se guardarán en Git.
 

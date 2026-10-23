@@ -47,8 +47,8 @@ Para los datos que pertenezcan a una organización se aplicarán estas reglas:
    asíncronos, scripts y procesos internos.
 
 El tenant podrá resolverse a partir de un subdominio, un token validado o una
-combinación coherente de ambos. El mecanismo concreto deberá definirse antes de
-implementar la autenticación multiempresa.
+combinación coherente de ambos. El flujo inicial y sus límites están definidos
+en [ADR 0004](decisions/0004-authentication-membership-tenant-resolution.md).
 
 ## Defensa en profundidad
 

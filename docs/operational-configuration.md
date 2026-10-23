@@ -1,7 +1,7 @@
 # Configuración operativa del MVP
 
-**Estado:** reglas canónicas definidas; el alta inicial de la organización está
-pendiente de decisión macro
+**Estado:** reglas canónicas definidas; alta inicial aprobada en
+[ADR 0004](decisions/0004-authentication-membership-tenant-resolution.md)
 
 Este documento define cómo una organización queda preparada para operar el
 [proceso de citas](appointment-process.md). Solo el administrador modifica la
@@ -54,7 +54,7 @@ Una invitación es independiente de una membresía. Tiene estado `pending`,
 - La aceptación crea o reactiva la membresía en una transacción. Repetirla para
   la misma persona es idempotente.
 - Una invitación vencida, revocada o destinada a otro correo no concede acceso.
-- La invitación inicial se regirá por el modelo de alta todavía pendiente.
+- La invitación inicial se regirá por el modelo de alta asistida aprobado.
 
 La membresía tiene estado `active`, `suspended` o `ended`. Puede suspenderse,
 restaurarse o terminarse con motivo y auditoría. Una membresía terminada solo se
@@ -203,13 +203,10 @@ modificará silenciosamente.
 - Contacto público atómico, reutilización interna explícita, duplicados seguros,
   archivo, corrección de instantánea y aislamiento entre tenants.
 
-## Decisión macro pendiente
+## Alta inicial aprobada
 
-Debe definirse cómo se crean la organización y su primer administrador. Se
-recomienda que un operador autorizado de TRANSFORMERS cree la organización en
-`setup` y envíe la invitación administradora inicial. El destinatario se
-autenticaría, verificaría el correo, aceptaría la invitación y después
-configuraría y activaría la organización. El registro empresarial autoservicio
-quedaría fuera del MVP para validar primero el proceso de citas sin agregar
-verificación empresarial, prevención de abuso y recuperación de onboarding.
+Un operador autorizado de TRANSFORMERS creará la organización en `setup` y
+enviará la invitación administradora inicial. El destinatario se autenticará,
+verificará el correo, aceptará la invitación y después configurará y activará la
+organización. El registro empresarial autoservicio queda fuera del MVP.
 

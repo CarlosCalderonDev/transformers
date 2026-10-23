@@ -130,6 +130,23 @@ adaptada a sus permisos y contextos. El frontend se organizará mediante
 componentes reutilizables, funcionalidades separadas y estructuras de
 navegación compartidas.
 
+## Identidad y contexto organizacional
+
+La autenticación será global y administrada por `optimus`. Admitirá credenciales
+locales propias y acceso federado inicial con Google y Microsoft mediante OpenID
+Connect. Una cuenta podrá vincular varios métodos de acceso, mientras que la
+persona y sus membresías seguirán siendo únicas e independientes del método
+utilizado.
+
+El identificador organizacional enviado por `bumblebee` será solo un selector.
+`optimus` resolverá el tenant, comprobará sesión, cuenta, organización,
+membresía y permiso, y después establecerá el contexto transaccional protegido
+por `arcee`. Los canales interno, público, de aprovisionamiento y de soporte
+mantendrán privilegios separados.
+
+La decisión completa está en
+[ADR 0004](decisions/0004-authentication-membership-tenant-resolution.md).
+
 Se utilizarán renderizado del lado del servidor e hidratación selectiva cuando
 resulte conveniente, procurando eficiencia, accesibilidad y compatibilidad con
 navegadores de computadores, tabletas y dispositivos móviles. Las reglas

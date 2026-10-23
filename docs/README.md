@@ -22,6 +22,9 @@ demás.
   control de cambios.
 - [Fundamento multi-tenant](decisions/0003-multi-tenancy-foundation.md): propiedad,
   aislamiento, contexto confiable, responsabilidades y verificación obligatoria.
+- [Autenticación propia, federada y resolución del tenant](decisions/0004-authentication-membership-tenant-resolution.md):
+  cuenta global, credencial local, Google, Microsoft, sesiones, membresías y
+  alta inicial.
 - [Visión del producto](product-vision.md): propósito, participantes, alcance y
   estrategia de evolución.
 - [Arquitectura y diseño técnico](architecture.md): organización del sistema,
