@@ -87,8 +87,10 @@ corresponda.
 - Historial de estados y acciones relevantes.
 - Autenticación del personal, permisos en el servidor y aislamiento entre
   empresas.
-- Registro de cuenta y creación autoservicio de una organización en `setup`,
-  con su creador como único administrador.
+- Registro de cuenta y creación autoservicio de una organización en `setup`.
+  Su creador queda como propietario único y recibe `administrator` y
+  `professional`: el MVP atiende negocios operados por su propietario
+  ([ADR 0009](decisions/0009-organization-ownership-and-initial-roles.md)).
 - Interfaz web responsiva.
 
 Los clientes invitados serán inicialmente contactos visibles solo para la

@@ -18,7 +18,9 @@ configuración; el profesional la consulta y opera sus citas asignadas.
 - Toda organización comienza en `setup` y su página en `unpublished`.
 - Una persona con cuenta autenticada y habilitada puede crear una organización
   en `setup`; la misma transacción le asigna su única membresía inicial,
-  `active` con rol `administrator`.
+  `active` con roles `administrator` y `professional`, y la registra como
+  propietaria conforme a
+  [ADR 0009](decisions/0009-organization-ownership-and-initial-roles.md).
 - El alta solicita el nombre visible. El sistema propone su identificador
   público único para la URL y el administrador puede cambiarlo antes de crear
   la organización.
@@ -213,8 +215,9 @@ modificará silenciosamente.
 
 ## Alta inicial aprobada
 
-Una persona autenticada crea su propia organización en `setup` y recibe en la
-misma transacción su membresía activa de administradora. Después configura y
+Una persona autenticada crea su propia organización en `setup`, queda como su
+propietaria y recibe en la misma transacción su membresía activa con
+`administrator` y `professional`. Después configura y
 activa la organización. El MVP no permite invitar integrantes ni administrar
 roles, pero conserva la membresía como base para incorporarlos en el futuro.
 

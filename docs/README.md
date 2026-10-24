@@ -40,8 +40,10 @@ demás.
   migraciones, compatibilidad, esquemas, roles y evidencia obligatoria.
 - [Propiedad y roles iniciales](decisions/0009-organization-ownership-and-initial-roles.md):
   propietario único y membresía inicial administradora y profesional.
-- [Cuenta personal sin organización propuesta](decisions/0010-personal-account-without-organization.md):
+- [Cuenta personal sin organización](decisions/0010-personal-account-without-organization.md):
   identidad y perfil globales separados de contactos e historial de clientes.
+- [Configuración controlada y catálogos propuestos](decisions/0011-controlled-configuration-and-catalogs.md):
+  catálogo de plataforma, plantillas por sector y opciones declaradas por módulo.
 - [Visión del producto](product-vision.md): propósito, participantes, alcance y
   estrategia de evolución.
 - [Arquitectura y diseño técnico](architecture.md): organización del sistema,

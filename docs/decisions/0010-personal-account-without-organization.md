@@ -1,8 +1,12 @@
 # ADR 0010: alcance de la cuenta personal sin organización
 
-**Estado:** propuesta
+**Estado:** aceptada
 
 **Fecha:** 2026-10-23
+
+**Aceptación:** 2026-10-24 por el director (opción A). El MVP mantiene la
+cuenta sin beneficios de reserva; se fija desde ahora la regla de vinculación
+futura descrita en «Evolución y ciclo de vida».
 
 ## Contexto
 
@@ -19,7 +23,7 @@ un depósito prematuro de datos de cliente.
 Esta decisión no define la propiedad ni los roles de una organización; esos
 asuntos pertenecen a ADR 0009.
 
-## Decisión propuesta
+## Decisión
 
 ### Cuenta global mínima
 
@@ -70,6 +74,13 @@ asuntos pertenecen a ADR 0009.
   Una futura vinculación requerirá otra decisión que defina prueba de control,
   consentimiento cuando corresponda, revocación, duplicados, visibilidad e
   historial por tenant.
+- La única prueba de control admitida para esa vinculación será una reserva
+  realizada por la propia persona con su sesión iniciada. Solo esa cita, y el
+  contacto creado por ella, podrán quedar asociados a su `Person`. Nunca se
+  vincularán citas o contactos existentes por coincidencia de correo o
+  teléfono, ni reservas creadas por el personal en su nombre. Con esa base, un
+  corte posterior podrá autocompletar datos, omitir el enlace de verificación
+  y ofrecer «mis citas» sin reinterpretar datos históricos.
 - Esa futura relación se apoyará en `Person`, que representa la identidad
   estable, no en `Account`, que representa el acceso. Vincular un contacto no
   concederá membresía ni acceso interno, y desvincularlo no borrará contactos,

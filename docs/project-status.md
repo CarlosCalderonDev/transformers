@@ -11,7 +11,8 @@ reales en `arcee`, `optimus` y `bumblebee` antes de continuar funcionalidades.
 - [x] Desarrollo funcional pausado por prioridad del director.
 - [x] Auditoría transversal de los tres repositorios de código completada.
 - [x] Propietario, administrador y profesional definidos sin contradicciones.
-- [ ] Alcance de la cuenta personal sin empresa definido para el MVP.
+- [x] Alcance de la cuenta personal sin empresa definido para el MVP.
+- [ ] Modelo de configuración controlada y catálogos definido.
 - [x] ADR de modularidad, frontera web y evolución de datos aceptados.
 - [ ] Estructuras base materializadas sin módulos especulativos.
 - [ ] Fronteras de seguridad P0 corregidas.
@@ -47,8 +48,13 @@ reales en `arcee`, `optimus` y `bumblebee` antes de continuar funcionalidades.
   roles; el MVP asume negocios operados por su propietario, cuya membresía
   inicial recibe `administrator` y `professional`. El ADR 0005 quedó
   confirmado con ese ajuste.
-- El ADR 0010 (cuenta personal sin organización) sigue en estado **propuesta**.
-  Es la última decisión de producto para cerrar la puerta 0 del tablero.
+- El [ADR 0010](decisions/0010-personal-account-without-organization.md) fue
+  aceptado el 2026-10-24: en el MVP la cuenta del cliente no cambia el flujo de
+  reserva; una vinculación futura solo se admitirá por reservas que la propia
+  persona realice con su sesión iniciada.
+- El director identificó la configuración controlada y los catálogos por
+  sector como una base del producto. Se registró como `FND-007` y se propone en
+  [ADR 0011](decisions/0011-controlled-configuration-and-catalogs.md).
 - El fundamento de aislamiento entre organizaciones fue aprobado en
   [ADR 0003](decisions/0003-multi-tenancy-foundation.md). Su implementación
   deberá validarse antes de construir los módulos funcionales.
@@ -91,18 +97,16 @@ reales en `arcee`, `optimus` y `bumblebee` antes de continuar funcionalidades.
 
 ## Siguiente paso
 
-Resolver el alcance de la cuenta personal sin empresa durante el MVP. La
-recomendación es que conserve solo su perfil y la capacidad de crear
-organizaciones, sin vincularse a contactos ni historial de citas por ahora. La
-propuesta completa está en
-[ADR 0010](decisions/0010-personal-account-without-organization.md).
+Decidir el modelo de configuración controlada y catálogos propuesto en
+[ADR 0011](decisions/0011-controlled-configuration-and-catalogs.md). Es la
+última decisión de la puerta 0.
 
 ## Ruta de cierre de la etapa
 
 1. **Completado:** auditar los tres repositorios y detener el crecimiento sobre
    límites provisionales.
-2. **En curso:** cerrar las contradicciones de producto (0009 aceptado; falta
-   0010).
+2. **En curso:** cerrar las decisiones de producto de la puerta 0 (0009 y 0010
+   aceptados; falta 0011).
 3. **Completado:** ADR 0006, 0007 y 0008 aceptados el 2026-10-24.
 4. **Pendiente:** materializar estructuras, migraciones y límites de seguridad
    según las puertas 1 y 2 del tablero.
@@ -113,7 +117,7 @@ propuesta completa está en
 
 ## Decisiones macro pendientes
 
-- Utilidad de una cuenta personal sin empresa durante el MVP (ADR 0010).
+- Modelo de configuración controlada y catálogos por sector (ADR 0011).
 - Antes del piloto: política de privacidad, retención y anonimización para usar
   datos reales.
 

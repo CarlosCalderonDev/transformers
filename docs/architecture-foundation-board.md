@@ -33,6 +33,7 @@ obligatoria contabilizándola como exitosa.
 ```text
                          ┌─ FND-002 propiedad y roles ────────┐
 FND-001 auditoría ───────┼─ FND-003 cuenta personal           │
+                         ├─ FND-007 configuración controlada  │
                          ├─ FND-004 arquitectura modular       ├─ Puertas 1 y 2
 XCHAR-001 evidencia ─────┼─ FND-005 frontera web              │
                          └─ FND-006 datos y migraciones ───────┘
@@ -54,7 +55,8 @@ comportamiento existente.
 | --- | --- | --- | --- | --- |
 | `FND-001` | verificado | transversal | Auditar estructura, dependencias, seguridad, datos y pruebas de los tres repositorios de código. | [Evaluación arquitectónica](architecture-assessment.md) y hallazgos trazados en este tablero. |
 | `FND-002` | verificado | `transformers` | Distinguir propietario, administrador y profesional; definir transferencia excepcional, suspensión, recuperación y protección del último responsable. Debe existir una ruta válida para que la empresa del MVP tenga profesional. | [ADR 0009 aceptado](decisions/0009-organization-ownership-and-initial-roles.md) el 2026-10-24: propietario único permanente; membresía inicial con `administrator` + `professional`. ADR 0005 confirmado. |
-| `FND-003` | decisión | `transformers` | Definir si la cuenta sin empresa solo conserva perfil y habilita crear organizaciones o si se vincula a contactos e historial durante el MVP. | [ADR 0010 propuesto](decisions/0010-personal-account-without-organization.md), escenarios incluidos/excluidos y documentos de MVP y glosario coherentes. |
+| `FND-003` | verificado | `transformers` | Definir si la cuenta sin empresa solo conserva perfil y habilita crear organizaciones o si se vincula a contactos e historial durante el MVP. | [ADR 0010 aceptado](decisions/0010-personal-account-without-organization.md) el 2026-10-24: sin vinculación en el MVP; la futura solo por reserva autenticada de la propia persona. |
+| `FND-007` | decisión | `transformers` | Definir el modelo de configuración controlada: catálogos genéricos por sector, qué es configurable por organización, validación, versionado y cómo una funcionalidad nueva se vuelve configurable sin código particular por cliente. | [ADR 0011 propuesto](decisions/0011-controlled-configuration-and-catalogs.md). |
 | `FND-004` | verificado | `transformers` | Aceptar, ajustar o rechazar la estructura modular y su grafo de dependencias. | [ADR 0006 aceptado](decisions/0006-modular-codebase-architecture.md) el 2026-10-24: monolito modular y cuatro repositorios separados. |
 | `FND-005` | verificado | `transformers` | Aceptar, ajustar o rechazar origen único, superficies HTTP y distribución del contrato. | [ADR 0007 aceptado](decisions/0007-web-api-boundary.md) el 2026-10-24: origen único y `optimus` como única autoridad HTTP. |
 | `FND-006` | verificado | `transformers` | Aceptar, ajustar o rechazar adopción de migraciones, compatibilidad, roles y protocolo transaccional de autorización. | [ADR 0008 aceptado](decisions/0008-database-evolution-and-access-boundaries.md) el 2026-10-24: base única con RLS y acceso runtime solo por funciones estrechas. |
