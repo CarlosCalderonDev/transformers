@@ -120,11 +120,11 @@ o solicitar un contexto, pero `optimus` será la autoridad que lo valida y
 
 ### Alta inicial aprobada
 
-Para el MVP, un operador confiable de TRANSFORMERS creará la organización en
-estado `setup` y emitirá la invitación del primer administrador. El destinatario
-se autenticará, verificará su correo, aceptará la invitación y completará la
-configuración antes de activar la organización. El registro empresarial
-autoservicio queda fuera del MVP.
+Esta decisión fue sustituida por [ADR 0005](0005-self-service-organization-onboarding.md).
+
+El modelo original de aprovisionamiento asistido se conserva únicamente como
+antecedente. La creación de una organización y su membresía administradora
+inicial ahora la ejecuta la propia cuenta autenticada conforme a ADR 0005.
 
 ## Verificación obligatoria
 

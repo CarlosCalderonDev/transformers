@@ -8,6 +8,11 @@ demás.
 
 - [Estado del proyecto](project-status.md): etapa actual, objetivo, decisiones
   pendientes y siguiente paso.
+- [Tablero del fundamento arquitectónico](architecture-foundation-board.md):
+  paquetes, dependencias, criterios y evidencia para cerrar la arquitectura de
+  los tres repositorios de código.
+- [Evaluación arquitectónica](architecture-assessment.md): dictamen transversal,
+  brechas encontradas y diseño objetivo propuesto.
 - [MVP inicial](mvp.md): segmento, problema, actores, alcance, exclusiones y
   criterios de aceptación aprobados.
 - [Proceso de citas](appointment-process.md): reglas, estados, transiciones,
@@ -25,6 +30,18 @@ demás.
 - [Autenticación propia, federada y resolución del tenant](decisions/0004-authentication-membership-tenant-resolution.md):
   cuenta global, credencial local, Google, Microsoft, sesiones, membresías y
   alta inicial.
+- [Creación autoservicio de organizaciones](decisions/0005-self-service-organization-onboarding.md):
+  alta de empresa por una cuenta autenticada y membresía administradora inicial.
+- [Arquitectura modular de código](decisions/0006-modular-codebase-architecture.md):
+  límites y dependencias de `arcee`, `optimus` y `bumblebee`.
+- [Frontera web y contrato HTTP](decisions/0007-web-api-boundary.md):
+  origen único, autoridad de la API, sesiones y contrato generado.
+- [Evolución y acceso a datos](decisions/0008-database-evolution-and-access-boundaries.md):
+  migraciones, compatibilidad, esquemas, roles y evidencia obligatoria.
+- [Propiedad y roles iniciales propuestos](decisions/0009-organization-ownership-and-initial-roles.md):
+  propietario único y membresía inicial administradora y profesional.
+- [Cuenta personal sin organización propuesta](decisions/0010-personal-account-without-organization.md):
+  identidad y perfil globales separados de contactos e historial de clientes.
 - [Visión del producto](product-vision.md): propósito, participantes, alcance y
   estrategia de evolución.
 - [Arquitectura y diseño técnico](architecture.md): organización del sistema,

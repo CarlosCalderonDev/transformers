@@ -6,7 +6,9 @@ Repositorio central de documentación del conjunto de proyectos Transformers.
 
 TRANSFORMERS es una plataforma web multiempresa para estandarizar y automatizar procesos operativos de pequeñas empresas. Facilita la interacción entre las empresas y las personas que utilizan sus productos y servicios mediante procesos compartidos, configurables y verificables.
 
-El MVP está definido y aprobado; el proyecto se encuentra en la etapa de lógica de negocio.
+El MVP está definido y aprobado. El proyecto se encuentra en diseño técnico y
+mantiene pausada la construcción funcional hasta cerrar y verificar su
+fundamento arquitectónico transversal.
 
 ## Responsabilidad
 
@@ -15,6 +17,8 @@ El MVP está definido y aprobado; el proyecto se encuentra en la etapa de lógic
 ## Documentación
 
 - [Estado y siguiente paso](docs/project-status.md)
+- [Tablero del fundamento arquitectónico](docs/architecture-foundation-board.md)
+- [Evaluación arquitectónica transversal](docs/architecture-assessment.md)
 - [MVP inicial](docs/mvp.md)
 - [Proceso de citas](docs/appointment-process.md)
 - [Configuración operativa](docs/operational-configuration.md)
@@ -24,6 +28,7 @@ El MVP está definido y aprobado; el proyecto se encuentra en la etapa de lógic
 - [Multi-tenancy](docs/multi-tenancy.md)
 - [Decisión del fundamento multi-tenant](docs/decisions/0003-multi-tenancy-foundation.md)
 - [Autenticación propia, federada y resolución del tenant](docs/decisions/0004-authentication-membership-tenant-resolution.md)
+- [Creación autoservicio de organizaciones](docs/decisions/0005-self-service-organization-onboarding.md)
 - [Stack tecnológico](docs/technology-stack.md)
 - [Índice completo](docs/README.md)
 

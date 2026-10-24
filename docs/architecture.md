@@ -15,6 +15,12 @@ La plataforma conservará el control de su lógica de negocio y sus operaciones
 fundamentales. Las integraciones externas complementarán únicamente capacidades
 específicas.
 
+La materialización práctica de esta dirección se encuentra temporalmente en
+revisión. El dictamen, las brechas y la puerta para continuar están en la
+[evaluación arquitectónica](architecture-assessment.md) y el
+[tablero del fundamento](architecture-foundation-board.md). Los ADR 0006,
+0007 y 0008 fueron aceptados el 2026-10-24.
+
 ## Arquitectura general
 
 La aplicación será un único sistema compuesto por módulos independientes en su
@@ -46,11 +52,11 @@ workspace/
 ├── transformers/  # lógica de negocio y arquitectura general
 ├── arcee/         # base de datos
 ├── bumblebee/     # frontend
-└── optimus/       # backend y trabajadores
+└── optimus/       # backend; trabajadores cuando exista una necesidad real
 ```
 
 `optimus` organizará el backend como un Cargo Workspace y conservará sus módulos
-funcionales, casos de uso, adaptadores y trabajadores. `bumblebee` consumirá sus
+funcionales, casos de uso y adaptadores. `bumblebee` consumirá sus
 capacidades mediante contratos HTTP explícitos. `arcee` será la fuente técnica
 de esquemas, migraciones, restricciones y políticas de acceso a datos.
 
@@ -111,10 +117,11 @@ electrónica.
 Las integraciones usarán adaptadores desacoplados para permitir el reemplazo de
 proveedores sin alterar las reglas de negocio.
 
-Las operaciones diferidas serán ejecutadas por trabajadores asíncronos basados
-en Tokio, con persistencia de tareas, reintentos, idempotencia y control de
-fallos. Cuando un cambio operativo y su evento deban registrarse atómicamente,
-se aplicará el patrón de outbox transaccional.
+Cuando un efecto duradero real necesite ejecución diferida, se incorporará un
+trabajador basado en Tokio con persistencia de tareas, reintentos, idempotencia
+y control de fallos. Cuando un cambio operativo y su evento deban registrarse
+atómicamente, se evaluará el patrón de outbox transaccional. No se crearán
+workers, eventos u outbox antes de existir ese caso concreto.
 
 PostgreSQL se utilizará inicialmente para las tareas duraderas. Solo se
 incorporarán tecnologías adicionales de mensajería cuando existan necesidades
@@ -158,8 +165,10 @@ La infraestructura inicial estará compuesta principalmente por:
 
 - La aplicación web en Next.js.
 - El servidor en Axum y Tokio.
-- Trabajadores asíncronos para tareas diferidas.
 - PostgreSQL como base de datos central.
+
+Los trabajadores se agregarán a esta infraestructura cuando exista la primera
+tarea duradera que no deba ejecutarse dentro de la solicitud web.
 
 Docker permitirá contenerizar los componentes y GitHub Actions automatizará la
 integración, verificación y entrega continuas.

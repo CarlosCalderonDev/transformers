@@ -23,6 +23,16 @@ Cada carpeta es un repositorio Git independiente, con su propio historial,
 remoto y documentación técnica. El agente debe realizar cada cambio en el
 repositorio responsable y no colocar código de aplicación en `transformers`.
 
+## Autorización interrepositorio
+
+El director autoriza al agente a acceder a los repositorios relacionados del
+espacio de trabajo (`transformers`, `arcee`, `bumblebee` y `optimus`) y a crear,
+leer, actualizar, mover o eliminar su contenido cuando sea necesario para
+cumplir una instrucción. Esta autorización incluye coordinar cambios entre esos
+repositorios cuando la solicitud lo requiera o pueda afectar sus contratos,
+comportamiento o documentación compartida. Cada modificación se hará en el
+repositorio responsable y respetará sus propias instrucciones.
+
 La lógica de negocio compartida se define primero en `transformers`. Los demás
 repositorios deben implementarla sin crear variantes contradictorias. Si una
 decisión técnica afecta a más de un repositorio, su resumen y consecuencias se

@@ -87,6 +87,8 @@ corresponda.
 - Historial de estados y acciones relevantes.
 - Autenticación del personal, permisos en el servidor y aislamiento entre
   empresas.
+- Registro de cuenta y creación autoservicio de una organización en `setup`,
+  con su creador como único administrador.
 - Interfaz web responsiva.
 
 Los clientes invitados serán inicialmente contactos visibles solo para la
@@ -104,6 +106,7 @@ un requisito para reservar en el MVP.
 - Sincronización con calendarios externos.
 - Selección automática de cualquier profesional disponible.
 - Roles personalizados y constructor genérico de procesos.
+- Invitaciones, empleados y administración de miembros de una organización.
 - Aplicaciones móviles nativas.
 - Cuenta global e historial unificado para clientes.
 - Métricas avanzadas y personalizaciones exclusivas por empresa.

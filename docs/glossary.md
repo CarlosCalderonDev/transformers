@@ -6,6 +6,7 @@ código utilizarán sus equivalentes en inglés.
 | Término | Identificador | Definición |
 | --- | --- | --- |
 | Persona | `Person` | Identidad global de una persona natural reconocida por la plataforma. No pertenece a una organización. |
+| Perfil personal | `PersonProfile` | Nombre y apellido globales de una persona. El correo se conserva y verifica por su método de autenticación. |
 | Cuenta de acceso | `Account` | Medio global mediante el que una persona se autentica. Deshabilitarla no elimina a la persona ni su historial. |
 | Organización | `Organization` | Empresa que configura y opera sus servicios, personal, horarios y citas. Es propietaria de sus datos operativos. |
 | Tenant | `tenant_id` | Frontera técnica de aislamiento. En el MVP corresponde a una organización, pero no se autentica ni actúa. |

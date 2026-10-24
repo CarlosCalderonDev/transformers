@@ -1,7 +1,7 @@
 # Configuración operativa del MVP
 
-**Estado:** reglas canónicas definidas; alta inicial aprobada en
-[ADR 0004](decisions/0004-authentication-membership-tenant-resolution.md)
+**Estado:** reglas canónicas definidas; alta autoservicio aprobada en
+[ADR 0005](decisions/0005-self-service-organization-onboarding.md)
 
 Este documento define cómo una organización queda preparada para operar el
 [proceso de citas](appointment-process.md). Solo el administrador modifica la
@@ -16,6 +16,14 @@ configuración; el profesional la consulta y opera sus citas asignadas.
 | `suspended` | Bloquea accesos y reservas; conserva datos y citas. |
 
 - Toda organización comienza en `setup` y su página en `unpublished`.
+- Una persona con cuenta autenticada y habilitada puede crear una organización
+  en `setup`; la misma transacción le asigna su única membresía inicial,
+  `active` con rol `administrator`.
+- El alta solicita el nombre visible. El sistema propone su identificador
+  público único para la URL y el administrador puede cambiarlo antes de crear
+  la organización.
+- La misma persona puede crear varias organizaciones. Cada creación conserva su
+  propio tenant y no comparte configuración ni datos operativos con las demás.
 - La configuración base contiene nombre, identificador público único, una sede
   con nombre y dirección, zona horaria IANA y moneda ISO 4217.
 - Activar exige la configuración base completa y al menos un administrador
@@ -54,7 +62,8 @@ Una invitación es independiente de una membresía. Tiene estado `pending`,
 - La aceptación crea o reactiva la membresía en una transacción. Repetirla para
   la misma persona es idempotente.
 - Una invitación vencida, revocada o destinada a otro correo no concede acceso.
-- La invitación inicial se regirá por el modelo de alta asistida aprobado.
+- Las invitaciones y la gestión de integrantes quedan fuera del MVP. La única
+  membresía inicial se crea junto con la organización conforme a ADR 0005.
 
 La membresía tiene estado `active`, `suspended` o `ended`. Puede suspenderse,
 restaurarse o terminarse con motivo y auditoría. Una membresía terminada solo se
@@ -71,9 +80,8 @@ persona y organización.
   organización se suspende en la misma operación hasta su recuperación asistida.
 
 Un administrador efectivo tiene cuenta habilitada, membresía `active` y rol
-`administrator`. Una invitación pendiente no cuenta. Una organización en
-`setup` puede carecer temporalmente de administrador solo mientras se completa
-su invitación inicial.
+`administrator`. Una invitación pendiente no cuenta. Cada organización creada
+en el MVP tiene desde su origen un administrador efectivo.
 
 ## Servicios, profesionales y asignaciones
 
@@ -205,8 +213,8 @@ modificará silenciosamente.
 
 ## Alta inicial aprobada
 
-Un operador autorizado de TRANSFORMERS creará la organización en `setup` y
-enviará la invitación administradora inicial. El destinatario se autenticará,
-verificará el correo, aceptará la invitación y después configurará y activará la
-organización. El registro empresarial autoservicio queda fuera del MVP.
+Una persona autenticada crea su propia organización en `setup` y recibe en la
+misma transacción su membresía activa de administradora. Después configura y
+activa la organización. El MVP no permite invitar integrantes ni administrar
+roles, pero conserva la membresía como base para incorporarlos en el futuro.
 
