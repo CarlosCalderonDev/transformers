@@ -1,8 +1,13 @@
 # ADR 0009: propiedad de la organización y roles iniciales
 
-**Estado:** propuesta
+**Estado:** aceptada
 
 **Fecha:** 2026-10-23
+
+**Aceptación:** 2026-10-24 por el director. Se confirmaron: creación
+autoservicio (ADR 0005), un único propietario permanente distinto de los roles
+operativos, y MVP para negocios operados por su propietario, cuya membresía
+inicial recibe `administrator` y `professional`.
 
 ## Contexto
 
@@ -16,7 +21,7 @@ También falta definir si **propietario** es solo el creador histórico, un rol
 operativo o una responsabilidad permanente. Dejarlo ambiguo afectaría salida de
 miembros, suspensión de cuentas, recuperación y una futura transferencia.
 
-## Decisión propuesta
+## Decisión
 
 - Cada organización tendrá exactamente un propietario, representado por
   `owner_person_id`, que referencia a una persona global. Una persona podrá ser
@@ -67,7 +72,7 @@ propietario le conceda acceso implícito fuera de la autorización ordinaria.
 
 ## Cambios sobre ADR 0005
 
-Si se acepta esta propuesta, sustituirá únicamente estas partes de ADR 0005:
+Esta decisión sustituye únicamente estas partes de ADR 0005:
 
 - donde dice que el alta crea solo el rol `administrator`, creará ambos roles;
 - donde protege al propietario frente a perder el rol administrador, protegerá

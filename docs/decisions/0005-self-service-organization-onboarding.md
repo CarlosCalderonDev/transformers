@@ -1,8 +1,11 @@
 # ADR 0005: creación autoservicio de organizaciones
 
-**Estado:** aceptada
+**Estado:** aceptada; ajustada por [ADR 0009](0009-organization-ownership-and-initial-roles.md)
 
 **Fecha:** 2026-10-23
+
+**Aceptación:** confirmada por el director el 2026-10-24. Los roles de la
+membresía inicial y la semántica de `owner_person_id` se rigen por ADR 0009.
 
 ## Contexto
 

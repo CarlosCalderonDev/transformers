@@ -10,7 +10,7 @@ reales en `arcee`, `optimus` y `bumblebee` antes de continuar funcionalidades.
 
 - [x] Desarrollo funcional pausado por prioridad del director.
 - [x] Auditoría transversal de los tres repositorios de código completada.
-- [ ] Propietario, administrador y profesional definidos sin contradicciones.
+- [x] Propietario, administrador y profesional definidos sin contradicciones.
 - [ ] Alcance de la cuenta personal sin empresa definido para el MVP.
 - [x] ADR de modularidad, frontera web y evolución de datos aceptados.
 - [ ] Estructuras base materializadas sin módulos especulativos.
@@ -42,9 +42,13 @@ reales en `arcee`, `optimus` y `bumblebee` antes de continuar funcionalidades.
   fue aceptado el 2026-10-24: una sola base PostgreSQL con RLS y acceso runtime
   exclusivamente mediante funciones estrechas que revalidan sesión, membresía y
   permiso en la misma transacción.
-- Los ADR 0009 y 0010 (propiedad y roles iniciales; cuenta sin organización)
-  siguen en estado **propuesta**. Son las dos contradicciones de producto que
-  faltan para cerrar la puerta 0 del tablero.
+- El [ADR 0009](decisions/0009-organization-ownership-and-initial-roles.md)
+  fue aceptado el 2026-10-24: propietario único y permanente distinto de los
+  roles; el MVP asume negocios operados por su propietario, cuya membresía
+  inicial recibe `administrator` y `professional`. El ADR 0005 quedó
+  confirmado con ese ajuste.
+- El ADR 0010 (cuenta personal sin organización) sigue en estado **propuesta**.
+  Es la última decisión de producto para cerrar la puerta 0 del tablero.
 - El fundamento de aislamiento entre organizaciones fue aprobado en
   [ADR 0003](decisions/0003-multi-tenancy-foundation.md). Su implementación
   deberá validarse antes de construir los módulos funcionales.
@@ -59,13 +63,10 @@ reales en `arcee`, `optimus` y `bumblebee` antes de continuar funcionalidades.
 - La autenticación global, las sesiones, la autorización por membresía y la
   resolución segura del tenant fueron aprobadas en
   [ADR 0004](decisions/0004-authentication-membership-tenant-resolution.md).
-- La creación autoservicio de una organización y su única membresía
-  administradora inicial fueron aprobadas en
-  [ADR 0005](decisions/0005-self-service-organization-onboarding.md).
-- Esa decisión entra en conflicto con la necesidad del MVP de tener un
-  profesional: sin empleados y con una membresía que solo posee
-  `administrator`, una organización nueva no puede quedar reservable. Es el
-  primer asunto macro por resolver.
+- La creación autoservicio de una organización fue aprobada en
+  [ADR 0005](decisions/0005-self-service-organization-onboarding.md); su
+  membresía inicial recibe ambos roles conforme a ADR 0009, lo que resuelve el
+  conflicto con la necesidad de un profesional en el MVP.
 - Una cuenta puede crear varias organizaciones independientes; el selector de
   organización nunca sustituye la validación de su membresía y permiso.
 - El alta solicita nombre visible e identificador público único de la
@@ -90,17 +91,18 @@ reales en `arcee`, `optimus` y `bumblebee` antes de continuar funcionalidades.
 
 ## Siguiente paso
 
-Resolver la semántica de propietario y los roles de su membresía inicial. La
-recomendación es mantener un único propietario explícito, distinto de los roles
-operativos y transferible solo mediante una operación excepcional futura; en el
-MVP su membresía recibe `administrator` y `professional`. La propuesta completa
-está en [ADR 0009](decisions/0009-organization-ownership-and-initial-roles.md).
+Resolver el alcance de la cuenta personal sin empresa durante el MVP. La
+recomendación es que conserve solo su perfil y la capacidad de crear
+organizaciones, sin vincularse a contactos ni historial de citas por ahora. La
+propuesta completa está en
+[ADR 0010](decisions/0010-personal-account-without-organization.md).
 
 ## Ruta de cierre de la etapa
 
 1. **Completado:** auditar los tres repositorios y detener el crecimiento sobre
    límites provisionales.
-2. **En curso:** cerrar las dos contradicciones de producto detectadas.
+2. **En curso:** cerrar las contradicciones de producto (0009 aceptado; falta
+   0010).
 3. **Completado:** ADR 0006, 0007 y 0008 aceptados el 2026-10-24.
 4. **Pendiente:** materializar estructuras, migraciones y límites de seguridad
    según las puertas 1 y 2 del tablero.
@@ -111,8 +113,7 @@ está en [ADR 0009](decisions/0009-organization-ownership-and-initial-roles.md).
 
 ## Decisiones macro pendientes
 
-- Semántica del propietario y combinación de roles de la membresía inicial.
-- Utilidad de una cuenta personal sin empresa durante el MVP.
+- Utilidad de una cuenta personal sin empresa durante el MVP (ADR 0010).
 - Antes del piloto: política de privacidad, retención y anonimización para usar
   datos reales.
 
